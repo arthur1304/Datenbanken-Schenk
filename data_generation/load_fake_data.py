@@ -5,12 +5,14 @@ from datetime import date, timedelta
 import psycopg2
 from faker import Faker
 
+import os
+
 DB_CONFIG = {
-    "host": "localhost",
-    "port": 5432,
-    "dbname": "projektdb",
-    "user": "projektuser",
-    "password": "projektpass",
+    "host": os.getenv("DB_HOST", "localhost"),
+    "port": int(os.getenv("DB_PORT", 5432)),
+    "dbname": os.getenv("DB_NAME", "projektdb"),
+    "user": os.getenv("DB_USER", "projektuser"),
+    "password": os.getenv("DB_PASSWORD", "projektpass"),
 }
 
 fake = Faker("de_DE")
